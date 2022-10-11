@@ -12,7 +12,6 @@ var connectionString = builder.Configuration.GetConnectionString("BookManagerApi
 builder.Services.AddScoped<IBookManagementService, BookManagementService>();
 builder.Services.AddControllers();
 builder.Services.AddDbContext<BookContext>(option =>
-// option.UseInMemoryDatabase("BookDb"));
    option.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 
 // Configure Swagger/OpenAPI DocumentationMySqlConnector.MySqlException: 'Access denied for user 'bookmanagerapi'@'localhost' (using password: YES)'
