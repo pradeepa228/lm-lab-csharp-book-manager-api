@@ -1,4 +1,5 @@
 ﻿using BookManagerApi.Models;
+using Microsoft.CodeAnalysis.VisualBasic.Syntax;
 
 namespace BookManagerApi.Services
 {
@@ -28,7 +29,7 @@ namespace BookManagerApi.Services
         public Book Update(long id, Book book)
         {
             var existingBookFound = FindBookById(id);
-
+            
             existingBookFound.Title = book.Title;
             existingBookFound.Description = book.Description;
             existingBookFound.Author = book.Author;
@@ -47,6 +48,17 @@ namespace BookManagerApi.Services
         public bool BookExists(long id)
         {
             return _context.Books.Any(b => b.Id == id);
+        }
+
+        public bool Delete(long id)
+        {
+            var existingBookFound = FindBookById(id);
+            if (existingBookFound != null)
+            {                
+                _context.Books.Remove(existingBookFound);
+                _context.SaveChanges();
+            }            
+            return true;
         }
     }
 }

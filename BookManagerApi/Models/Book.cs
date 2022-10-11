@@ -1,10 +1,13 @@
-﻿namespace BookManagerApi.Models
+﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace BookManagerApi.Models
 {
 	public class Book
 	{
-		public long Id { get; set; }
-		public string Title { get; set; }
-		public string Description { get; set; }
+		public long Id { get; set; }		        
+		public string Title { get; set; }        
+		public string Description { get; set; }        
 		public string Author { get; set; }
 		public Genre Genre { get; set; }
 	}
